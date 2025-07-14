@@ -60,8 +60,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        poetry: ["Playfair Display", "Crimson Text", "serif"],
-        sans: ["Inter", "system-ui", "sans-serif"],
+        poetry: ["var(--font-playfair)", "Playfair Display", "serif"],
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
         "poetry-sm": ["1.125rem", "1.75"],
