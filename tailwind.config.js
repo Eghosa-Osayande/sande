@@ -1,13 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 import animate from "tailwindcss-animate";
+
 module.exports = {
   darkMode: ["class"],
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
-
-    // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -43,6 +42,7 @@ module.exports = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
+          secondary: "hsl(var(--accent-secondary))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -58,6 +58,17 @@ module.exports = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+      },
+      fontFamily: {
+        poetry: ["Playfair Display", "Crimson Text", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        "poetry-sm": ["1.125rem", "1.75"],
+        "poetry-base": ["1.25rem", "1.8"],
+        "poetry-lg": ["1.5rem", "1.8"],
+        "poetry-xl": ["1.875rem", "1.6"],
+        "poetry-2xl": ["2.25rem", "1.5"],
       },
     },
   },
