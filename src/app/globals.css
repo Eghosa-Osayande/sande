@@ -47,7 +47,7 @@
     --secondary-foreground: 0 0% 100%; /* #ffffff */
     --muted: 0 0% 10%; /* #1a1a1a */
     --muted-foreground: 0 0% 64%; /* #a3a3a3 */
-    --accent: 43 74% 42%; /* #d4af37 - Same gold works in dark */
+    --accent: 48 98% 54%; /* #d4af37 - Same gold works in dark */
     --accent-foreground: 0 0% 0%; /* #000000 - Dark text on gold */
     --accent-secondary: 43 60% 60%; /* Adjusted secondary for dark mode */
     --destructive: 0 63% 31%; /* Darker red for dark mode */

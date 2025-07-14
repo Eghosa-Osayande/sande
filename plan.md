@@ -14,15 +14,29 @@ A minimalist black-themed poetry website showcasing Osadolor Osayande's work, fe
 
 ## Design System
 
-### Color Palette
+### Color Palette (Dark/Light Mode)
 
-- **Primary Black:** `#000000` (backgrounds, text)
+**Dark Mode:**
+
+- **Primary Black:** `#000000` (backgrounds)
 - **Charcoal:** `#1a1a1a` (cards, sections)
 - **Dark Gray:** `#2d2d2d` (borders, subtle elements)
-- **Gold Accent:** `#d4af37` (highlights, CTA buttons)
-- **Warm Gold:** `#f4e4bc` (hover states, secondary accents)
-- **White:** `#ffffff` (primary text on dark backgrounds)
+- **White:** `#ffffff` (primary text)
 - **Light Gray:** `#a3a3a3` (secondary text, metadata)
+
+**Light Mode:**
+
+- **Primary White:** `#ffffff` (backgrounds)
+- **Light Gray:** `#f8f9fa` (cards, sections)
+- **Border Gray:** `#e5e7eb` (borders, subtle elements)
+- **Black:** `#000000` (primary text)
+- **Dark Gray:** `#6b7280` (secondary text, metadata)
+
+**Shared Accent Colors:**
+
+- **Accent Primary:** `#d4af37` (highlights, CTA buttons) - Gold theme
+- **Accent Secondary:** `#f4e4bc` (hover states, secondary accents) - Light gold
+- **Accent Dark:** `#b8941f` (darker accent for enhanced contrast)
 
 ### Typography
 
@@ -108,35 +122,46 @@ A minimalist black-themed poetry website showcasing Osadolor Osayande's work, fe
 
 4. **Configure Tailwind**
 
-   - Custom color palette
+   - Custom color palette for dark/light modes
    - Typography plugin
    - Custom fonts setup
+   - Dark mode configuration
 
-5. **Create base layout structure**
-   - Header with navigation
+5. **Setup Theme System**
+
+   - Theme context provider
+   - Theme toggle component
+   - Local storage persistence
+   - System preference detection
+
+6. **Create base layout structure**
+   - Header with navigation and theme toggle
    - Footer
-   - Main layout wrapper
+   - Main layout wrapper with theme classes
 
 ### Phase 2: Core Components (Week 2)
 
 1. **Reusable Components**
 
-   - `<Hero />` - Landing page hero section
+   - `<Hero />` - Landing page hero section with theme support
    - `<PoetryQuote />` - Styled quote component
-   - `<BookCard />` - Book display component
+   - `<BookCard />` - Book display component with theme variants
    - `<AwardBadge />` - Recognition display
    - `<PrizeTimeline />` - Important dates component
+   - `<ThemeToggle />` - Dark/light mode switcher
 
 2. **Navigation System**
 
-   - Responsive header
-   - Mobile menu
+   - Responsive header with theme toggle
+   - Mobile menu with theme awareness
    - Active page indicators
+   - Smooth theme transitions
 
 3. **Typography System**
-   - Poetry-specific text styles
+   - Poetry-specific text styles for both themes
    - Responsive typography scales
    - Custom heading components
+   - Theme-aware contrast optimization
 
 ### Phase 3: Page Development (Week 3)
 
@@ -197,13 +222,21 @@ A minimalist black-themed poetry website showcasing Osadolor Osayande's work, fe
 
 ## Key Features & Functionality
 
+### Theme System
+
+- **Automatic Detection**: System preference detection on first visit
+- **Manual Toggle**: Smooth theme switching with animation
+- **Persistence**: User preference saved in localStorage
+- **Smooth Transitions**: CSS transitions for theme changes
+- **Component Variants**: All components designed for both themes
+
 ### Interactive Elements
 
 - Smooth scrolling between sections
-- Hover effects on cards and buttons
+- Theme-aware hover effects on cards and buttons
 - Subtle animations for text reveals
-- Image gallery for books/awards
-- Responsive contact forms
+- Image gallery with theme-appropriate overlays
+- Responsive contact forms with theme styling
 
 ### Content Management
 
@@ -240,7 +273,58 @@ A minimalist black-themed poetry website showcasing Osadolor Osayande's work, fe
 - Reader testimonials
 - Purchase links (Amazon, local bookstores)
 
-## Technical Considerations
+### Technical Considerations
+
+### Theme Implementation
+
+```typescript
+// Theme Context
+interface ThemeContextType {
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+  setTheme: (theme: "light" | "dark") => void;
+}
+
+// Tailwind Config
+module.exports = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        background: {
+          DEFAULT: "hsl(var(--background))",
+        },
+        foreground: {
+          DEFAULT: "hsl(var(--foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+          secondary: "hsl(var(--accent-secondary))",
+        },
+        // Add other semantic colors as needed
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+    },
+  },
+};
+
+// CSS Variables in globals.css
+:root {
+  --accent: 43 74% 42%; /* #d4af37 converted to HSL */
+  --accent-foreground: 0 0% 0%; /* Dark text on gold background */
+  --accent-secondary: 45 67% 85%; /* #f4e4bc converted to HSL */
+}
+
+.dark {
+  --accent: 43 74% 42%; /* Same gold works in dark mode */
+  --accent-foreground: 0 0% 100%; /* White text on gold background */
+  --accent-secondary: 43 60% 60%; /* Adjusted secondary for dark mode */
+}
+```
 
 ### File Structure
 
@@ -257,7 +341,14 @@ src/
 │   ├── ui/ (shadcn components)
 │   ├── layout/
 │   ├── sections/
-│   └── forms/
+│   ├── forms/
+│   └── theme/
+│       ├── theme-provider.tsx
+│       └── theme-toggle.tsx
+├── contexts/
+│   └── theme-context.tsx
+├── hooks/
+│   └── use-theme.ts
 ├── lib/
 │   └── utils.ts
 └── public/
@@ -276,11 +367,13 @@ src/
 ### Pre-Launch
 
 - [ ] All content reviewed and approved
-- [ ] Images optimized and compressed
-- [ ] Forms tested and functional
+- [ ] Images optimized for both themes
+- [ ] Forms tested and functional in both modes
 - [ ] Mobile responsiveness verified
 - [ ] SEO metadata complete
 - [ ] Performance optimized
+- [ ] Theme switching tested across all devices
+- [ ] Color contrast verified for accessibility
 
 ### Post-Launch
 
