@@ -24,9 +24,11 @@ export default function Home() {
         imageAlt="Osadolor Osayande - Portrait"
         primaryAction={{
           text: "Explore Books",
+          href: "/books",
         }}
         secondaryAction={{
           text: "About the Poet",
+          href: "/about",
         }}
       />
 

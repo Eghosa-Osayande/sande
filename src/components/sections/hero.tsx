@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 interface HeroProps {
   title: string;
@@ -56,22 +57,26 @@ export function Hero({
             {(primaryAction || secondaryAction) && (
               <div className="flex flex-col sm:flex-row gap-4">
                 {primaryAction && (
-                  <Button
-                    size="lg"
-                    className="bg-accent hover:bg-accent/90 text-accent-foreground"
-                    onClick={primaryAction.onClick}
-                  >
-                    {primaryAction.text}
-                  </Button>
+                  <Link href={primaryAction.href || "#"}>
+                    <Button
+                      size="lg"
+                      className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      onClick={primaryAction.onClick}
+                    >
+                      {primaryAction.text}
+                    </Button>
+                  </Link>
                 )}
                 {secondaryAction && (
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    onClick={secondaryAction.onClick}
-                  >
-                    {secondaryAction.text}
-                  </Button>
+                  <Link href={secondaryAction.href || "#"}>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      onClick={secondaryAction.onClick}
+                    >
+                      {secondaryAction.text}
+                    </Button>
+                  </Link>
                 )}
               </div>
             )}
