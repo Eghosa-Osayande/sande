@@ -12,55 +12,63 @@ import { Separator } from "@/components/ui/separator";
 
 const awards = [
   {
-    title: "Nigeria Prize for Literature",
-    organization: "Nigeria LNG Limited",
+    title: "Brigette Poirson Poetry Prize",
+    organization: "Recipient",
     year: "2020",
-    description:
-      "Recognition for outstanding contribution to Nigerian literature through poetry.",
+    description: "Recognition for outstanding contribution to poetry.",
   },
   {
-    title: "Sande Prize Founder",
-    organization: "Self-Founded",
-    year: "2024",
-    description:
-      "Established the prestigious Sande Prize to support emerging Nigerian poets.",
+    title: "Albert Junger's Poetry Prize",
+    organization: "Shortlist",
+    year: "2020",
+    description: "Shortlisted for exceptional literary work.",
   },
   {
-    title: "Commonwealth Writers&apos; Prize",
-    organization: "Commonwealth Foundation",
-    year: "2019",
+    title: "Babishai Niwe Poetry Prize",
+    organization: "Longlist",
+    year: "2017",
+    description: "Longlisted for examinations of African Post-colonial trauma.",
+  },
+  {
+    title: "Sande Poetry Prize",
+    organization: "Founder",
+    year: "2025",
     description:
-      "Shortlisted for exceptional literary work celebrating African identity.",
+      "Established literary prize to nurture emerging Nigerian poetic voices.",
   },
 ];
 
 const timeline = [
   {
-    year: "1985",
-    event: "Born in Lagos, Nigeria",
-    description: "Early exposure to diverse Nigerian cultures and languages.",
-  },
-  {
-    year: "2008",
-    event: "First Poetry Collection",
-    description:
-      "Published debut collection exploring themes of identity and belonging.",
-  },
-  {
-    year: "2015",
-    event: '"Thirty Photographs of God" Released',
-    description:
-      "Critically acclaimed collection examining spirituality and Nigerian life.",
+    year: "2017",
+    event: "Babishai Niwe Poetry Prize (Longlisted)",
+    description: "Examinations of African Post-colonial trauma",
   },
   {
     year: "2020",
-    event: '"My Accent is a Zebra" Published',
+    event: "Brigitte Poirson Poetry Prize (Recipient)",
+    description: "Awarded for exceptional poetic achievement",
+  },
+  {
+    year: "2020",
+    event: "Albert Junger's Poetry Prize (Runner Up)",
+    description: "Shortlisted for outstanding literary work",
+  },
+  {
+    year: "2024",
+    event: '"Thirty Photographs of God" (Published)',
+    description:
+      "Critically acclaimed collection examining spirituality, suffering and cancer.",
+  },
+  {
+    year: "2025",
+    event: '"Forked Accents" (Published)',
     description:
       "Bold exploration of language, culture, and the immigrant experience.",
   },
   {
-    year: "2024",
-    event: "Sande Prize Launched",
+    year: "2025",
+    event: "Sande Prize for Poetry (Launched)",
     description:
       "Founded literary prize to nurture emerging Nigerian poetic voices.",
   },
@@ -71,7 +79,7 @@ export default function About() {
     <Layout>
       {/* Hero Section */}
       <Hero
-        title="About the Poet"
+        title="About the Author"
         subtitle="Osadolor Osayande"
         description="A voice that bridges continents, cultures, and generations through the power of verse."
         imageSrc="/images/poet-about.png"
@@ -85,34 +93,38 @@ export default function About() {
           <div className="max-w-4xl mx-auto space-y-12">
             {/* Main Biography */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold font-poetry">
-                Literary Journey
-              </h2>
+              <h2 className="text-3xl font-bold font-poetry">Biography</h2>
               <div className="prose prose-lg max-w-none space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Osadolor Osayande stands as one of Nigeria&apos;s most
-                  compelling contemporary voices, weaving together the rich
-                  tapestry of African experience with universal themes of love,
-                  loss, identity, and hope. Born in Lagos and shaped by the
-                  vibrant cultural landscape of Nigeria, his poetry captures
-                  both the intimate personal moments and the sweeping historical
-                  narratives that define modern African literature.
+                  Osadolor Osayande is a Nigerian poet and storyteller whose
+                  work thoughtfully explores the intersections of faith,
+                  cultural preservation, family and intimacy. His debut
+                  chapbook, Thirty Photographs of God, is a poignant meditation
+                  on the coexistence of God and the concept of human suffering,
+                  framed through the lens of cancer. Praised for its haunting
+                  metaphors and emotional unpredictability, the collection
+                  resonated with readers and established Osadolor as a
+                  compelling new voice in contemporary African poetry.
                 </p>
                 <p>
-                  His work is characterized by its unflinching honesty, lyrical
-                  beauty, and deep commitment to exploring what it means to be
-                  Nigerian in a globalized world. Through his poetry, Osayande
-                  examines the complexities of cultural identity, the immigrant
-                  experience, and the enduring power of language to preserve and
-                  transmit cultural memory.
+                  His current collection, Forked Accents, examines the power of
+                  language and pronunciation in shaping identity and experience.
+                  Richly African yet empathetically global, the work celebrates
+                  the accent as both a deeply personal and cultural signature,
+                  blending metaphorical lushness with thoughtful observation.
                 </p>
                 <p>
-                  Beyond his role as a poet, Osayande has emerged as a crucial
-                  advocate for emerging literary voices. The establishment of
-                  the Sande Prize for Nigerian Poetry represents his commitment
-                  to fostering the next generation of Nigerian poets, ensuring
-                  that the rich tradition of Nigerian verse continues to evolve
-                  and flourish.
+                  Osadolor&apos;s literary impacts have garnered recognition
+                  across esteemed platforms. He was longlisted for the Babishai
+                  Niwe Poetry Prize, awarded the Brigitte Poirson Poetry Prize,
+                  and shortlisted for the Albert Jungers Poetry Prize.
+                </p>
+                <p>
+                  Beyond the written word, Osadolor finds equal fulfilment in
+                  geology, supply chain management, and music. Now based in the
+                  United Kingdom, Osadolor continues to write with insight,
+                  weaving themes of intimacy, resilience, seeking to elevate
+                  human consciousness and foster cultural confidence.
                 </p>
               </div>
             </div>
@@ -122,7 +134,7 @@ export default function About() {
             {/* Awards & Recognition */}
             <div className="space-y-8">
               <h2 className="text-3xl font-bold font-poetry">
-                Awards & Recognition
+                Awards and Recognition
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {awards.map((award, index) => (
@@ -187,12 +199,14 @@ export default function About() {
               <Card className="p-8 bg-accent/5">
                 <blockquote className="space-y-4">
                   <p className="font-poetry text-poetry-lg italic leading-relaxed">
-                    &quot;Poetry is not just about beautiful words arranged in
-                    pleasing patterns. It is about truth-telling, about bearing
-                    witness to the human experience in all its complexity. For
-                    me, poetry is a way of preserving the stories that might
-                    otherwise be lost, of giving voice to the voiceless, and of
-                    celebrating the resilience of the human spirit.&quot;
+                    &quot;Throughout history, we have seen poetry play a crucial
+                    role in shaping life. From God&apos;s first usage of
+                    personification—calling the word God, and God the word—to
+                    Shakespeare&apos;s imageries of love that challenge us to
+                    aspire towards collective sweetness, poetry has always
+                    helped us see the easily eluded. And now, more than ever,
+                    the world needs the voice of poetry to help us notice the
+                    beauties we would be forever too busy to notice.&quot;
                   </p>
                   <footer className="text-muted-foreground">
                     <cite className="not-italic">— Osadolor Osayande</cite>

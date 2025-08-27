@@ -18,12 +18,12 @@ export default function Home() {
       {/* Hero Section */}
       <Hero
         title="Osadolor Osayande"
-        subtitle="Celebrated Nigerian Poet"
-        description="Author of 'Thirty Photographs of God' and 'My Accent is a Zebra'. Founder of the Sande Prize for Nigerian Poetry, celebrating and nurturing the rich tradition of Nigerian verse."
+        subtitle="Author of 'Forked Accents' and 'Thirty Photographs of God'. Founder of the Sande Prize for Nigerian Poetry, celebrating and nurturing the rich tradition of African poetry."
+        description="Author of 'Forked Accents' and 'Thirty Photographs of God'. Founder of the Sande Prize for Nigerian Poetry, celebrating and nurturing the rich tradition of African poetry."
         imageSrc="/images/poet-hero.png"
         imageAlt="Osadolor Osayande - Portrait"
         primaryAction={{
-          text: "Explore Books",
+          text: "Read Sample Poems",
           href: "/books",
         }}
         secondaryAction={{
@@ -34,9 +34,9 @@ export default function Home() {
 
       {/* Featured Quote */}
       <PoetryQuote
-        quote="In every word lies the heartbeat of a nation, in every verse the dreams of a people waiting to be born."
+        quote="When my grandfather said 'you are a man so you will fall in love with precision', what he really meant to say was 'you are a man so you will fall in love with poetry'"
         author="Osadolor Osayande"
-        source="From 'Thirty Photographs of God'"
+        source=""
         className="bg-muted/50"
       />
 
@@ -87,8 +87,8 @@ export default function Home() {
                   </div>
                   <CardTitle className="font-poetry">Published Works</CardTitle>
                   <CardDescription>
-                    Explore &quot;Thirty Photographs of God&quot; and &quot;My
-                    Accent is a Zebra&quot; - collections that capture the
+                    Explore &quot;Thirty Photographs of God&quot; and
+                    &quot;Forked Accents&quot; - collections that capture the
                     Nigerian experience.
                   </CardDescription>
                 </CardHeader>

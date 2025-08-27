@@ -8,7 +8,15 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, BookOpen } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface BookCardProps {
   title: string;
@@ -24,6 +32,7 @@ interface BookCardProps {
     text: string;
     author: string;
   }[];
+  excerpts?: { title?: string; content: string }[];
   className?: string;
 }
 
@@ -35,8 +44,12 @@ export function BookCard({
   themes = [],
   purchaseLinks = [],
   reviews = [],
+  excerpts = [],
   className = "",
 }: BookCardProps) {
+  const previewExcerpt =
+    excerpts.length > 0 ? `${excerpts[0].content.substring(0, 150)}...` : "";
+
   return (
     <Card className={`overflow-hidden ${className}`}>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -76,6 +89,54 @@ export function BookCard({
             <p className="text-muted-foreground leading-relaxed">
               {description}
             </p>
+
+            {/* Excerpts Preview */}
+            {excerpts.length > 0 && (
+              <div className="space-y-3" id="excerpts">
+                <h4 className="text-sm font-semibold text-foreground">
+                  Excerpt
+                </h4>
+                <blockquote className="border-l-4 border-accent/30 pl-4 bg-muted/20 p-4 rounded-r-lg">
+                  <p className="text-sm text-muted-foreground leading-relaxed font-poetry italic">
+                    {previewExcerpt}
+                  </p>
+                </blockquote>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="outline" size="sm">
+                      <BookOpen className="h-4 w-4 mr-2" />
+                      Read Full Excerpts
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-poetry">
+                        Excerpts from &quot;{title}&quot;
+                      </DialogTitle>
+                      <DialogDescription>
+                        A deeper look into the world of &quot;{title}&quot;.
+                      </DialogDescription>
+                    </DialogHeader>
+                    <div className="space-y-8 py-4">
+                      {excerpts.map((excerpt, index) => (
+                        <div key={index}>
+                          {excerpt.title && (
+                            <h3 className="text-xl font-poetry text-accent font-bold mb-4">
+                              {excerpt.title}
+                            </h3>
+                          )}
+                          <div className="prose prose-lg max-w-none text-muted-foreground">
+                            <p className="whitespace-pre-line font-poetry">
+                              {excerpt.content}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </DialogContent>
+                </Dialog>
+              </div>
+            )}
 
             {/* Themes */}
             {themes.length > 0 && (
@@ -117,7 +178,7 @@ export function BookCard({
 
             {/* Purchase Links */}
             {purchaseLinks.length > 0 && (
-              <div className="space-y-3">
+              <div className="space-y-3" id="purchase-links">
                 <h4 className="text-sm font-semibold text-foreground">
                   Get the Book
                 </h4>
