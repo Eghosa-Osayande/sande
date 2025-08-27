@@ -11,73 +11,56 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Award, Users, BookOpen, Mail, CheckCircle } from "lucide-react";
+import { Mail, Calendar, Users } from "lucide-react";
 
 const timelineEvents = [
   {
-    title: "Submissions Open",
+    title: "Submission Window Opens",
     date: "August 31, 2025",
-    description:
-      "The submission period begins for the 2025 Sande Prize. Poets can submit exactly two poems through our online portal.",
+    description: "The submission portal opens for all eligible Nigerian poets.",
     status: "upcoming" as const,
   },
   {
-    title: "Submission Deadline",
+    title: "Submission Window Closes",
     date: "September 30, 2025",
     description:
-      "All submissions must be received by 11:59 PM WAT. Late submissions will not be considered.",
+      "Final day for all submissions. No entries will be accepted after this date.",
     status: "upcoming" as const,
   },
   {
-    title: "Judging Period",
-    date: "October - November 2025",
+    title: "Shortlist Announcement",
+    date: "October 2025",
     description:
-      "Our distinguished panel of judges reviews all submissions. Shortlist announced in late November.",
+      "The judging panel will announce the shortlist for the 2025 prize.",
     status: "upcoming" as const,
   },
   {
-    title: "Winner Announcement",
+    title: "Winners Declared",
     date: "December 2025",
     description:
-      "The 2025 Sande Prize winner will be announced at a special ceremony.",
+      "The winners of the 2025 Sande Prize for Nigerian Poetry will be declared.",
     status: "upcoming" as const,
   },
 ];
 
-const eligibilityRequirements = [
-  "Must be a Nigerian writer (born in Nigeria, national/resident of Nigeria, or have at least one Nigerian parent)",
-  "Submit exactly two poems, no more, no less",
-  "Each poem must be no longer than 40 lines",
-  "Poems must be original and unpublished",
-  "Only poems written in English are eligible (translated poems welcome)",
-  "Submissions must be in Word or PDF format with proper formatting",
-];
-
-const submissionFormat = [
-  "Cover page with author's full name, biography, date of birth, contact email and phone number, brief publication history",
-  "Times New Roman or Arial, 12-point font",
-  "Single-spaced",
-  "One poem per page",
-  "Black text only",
-  "Email submissions to: sandepoetryprize@sande.com",
+const eligibilityCriteria = [
+  "Was born in Nigeria,",
+  "Is a national or legal resident of Nigeria, or",
+  "Has at least one Nigerian parent.",
 ];
 
 const judgingPanel = [
   {
     name: "Osadolor Osayande",
     role: "Chair",
-    description:
-      "Founder of the Sande Prize, author of 'Forked Accents' and 'Thirty Photographs of God'",
   },
   {
     name: "Ngozi Nzokurum",
     role: "Judge",
-    description: "Distinguished Nigerian poet and literary critic",
   },
   {
     name: "Jideofor Azonuche",
     role: "Judge",
-    description: "Renowned poet and educator",
   },
 ];
 
@@ -86,62 +69,60 @@ export default function SandePrize() {
     <Layout>
       {/* Hero Section */}
       <Hero
-        title="The Sande Prize"
-        subtitle="For Nigerian Poetry"
-        description="An annual literary award of ₦500,000, presented to two outstanding poems written by a Nigerian poet. Celebrating excellence in contemporary Nigerian poetry and providing both financial and creative support to poets working within and beyond the country's borders."
+        title="The Sande Prize for Nigerian Poetry"
+        // subtitle="An annual literary award of ₦1,000,000"
+        description="An annual literary award of ₦1,000,000, presented to two outstanding poems written by a Nigerian poet, the prize celebrates excellence in contemporary Nigerian poetry and provides financial and creative support to poets at home and abroad."
         primaryAction={{
-          text: "Submit Your Work",
+          text: "Submit Your Poems",
+          href: "mailto:sandepoetryprize@sande.com",
         }}
         secondaryAction={{
-          text: "View Guidelines",
+          text: "View Submission Guidelines",
+          href: "#submission-guidelines",
         }}
         className="bg-accent/5"
       />
 
-      {/* Mission Statement */}
+      {/* About the Prize */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold font-poetry">
-              Our Mission
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              The Sande Prize seeks to celebrate excellence in contemporary
-              Nigerian poetry and provide both financial and creative support to
-              poets working within and beyond the country&apos;s borders. It
-              recognizes Nigeria as home to some of the most gifted literary
-              voices in Africa—voices that often lack platforms for exposure and
-              meaningful funding opportunities.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center space-y-4">
-                <div className="mx-auto w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Award className="h-8 w-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold">Excellence</h3>
-                <p className="text-muted-foreground">
-                  Celebrating exceptional talent in Nigerian poetry
-                </p>
-              </div>
-              <div className="text-center space-y-4">
-                <div className="mx-auto w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Users className="h-8 w-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold">Support</h3>
-                <p className="text-muted-foreground">
-                  Providing financial and creative support to emerging voices
-                </p>
-              </div>
-              <div className="text-center space-y-4">
-                <div className="mx-auto w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <BookOpen className="h-8 w-8 text-accent" />
-                </div>
-                <h3 className="text-xl font-semibold">Platform</h3>
-                <p className="text-muted-foreground">
-                  Creating opportunities for exposure and recognition
-                </p>
-              </div>
+          <div className="max-w-4xl mx-auto space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold font-poetry">
+                About the Prize
+              </h2>
+            </div>
+            <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4">
+              <p>
+                The Sande Prize for Nigerian Poetry is an annual literary award
+                of ₦1,000,000, presented to two outstanding poems written by a
+                Nigerian poet.
+              </p>
+              <p>
+                Launched in 2025, the Prize is founded by Osadolor Osayande,
+                Itohan Osayande (co-founder), Eseosa Osayande (co-founder),
+                Ameze Osayande (co-founder), and Eghosa Osayande
+                (co-founder)—siblings from a family deeply rooted in Nigeria’s
+                literary storytelling traditions. The name Sande is a shortened
+                form of their shared surname, Osayande, and symbolises their
+                collective vision for elevating Nigerian poetry.
+              </p>
+              <p>
+                The Sande Prize seeks to celebrate excellence in contemporary
+                Nigerian poetry and provide both financial and creative support
+                to poets working within and beyond the country’s borders. It
+                recognizes Nigeria as home to some of the most gifted literary
+                voices in Africa—voices that often lack platforms for exposure
+                and meaningful funding opportunities.
+              </p>
+              <p>
+                Osadolor Osayande, the founder, is a Nigerian poet and
+                storyteller and the author of two poetry collections. He has
+                been longlisted for the Babishai Niwe Poetry Prize, awarded the
+                Brigitte Poirson Poetry Prize, and shortlisted for the Albert
+                Jungers Poetry Prize. His work explores themes of faith, family,
+                intimacy, and cultural identity.
+              </p>
             </div>
           </div>
         </div>
@@ -149,69 +130,51 @@ export default function SandePrize() {
 
       <Separator />
 
-      {/* 2025 Competition Details */}
-      <section className="py-16">
+      {/* Prize Submissions: 2025 */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="text-center space-y-4">
               <Badge className="bg-accent text-accent-foreground">
-                2025 Competition
+                Prize Submissions: 2025
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold font-poetry">
-                Now Accepting Submissions
+                Submission Window & Eligibility
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Prize Package */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
               <Card className="p-6">
                 <CardHeader className="p-0 mb-6">
-                  <CardTitle className="text-2xl font-poetry">
-                    Prize Package
+                  <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                    <Calendar className="h-6 w-6 text-accent" />
+                    Submission Window
                   </CardTitle>
                   <CardDescription>
-                    ₦500,000 cash prize for outstanding poetry
+                    August 31, 2025 – September 30, 2025
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="p-0 space-y-4">
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      ₦500,000 cash prize
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      Publication on official website
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-accent mt-0.5 flex-shrink-0" />
-                    <span className="text-muted-foreground">
-                      Literary recognition and exposure
-                    </span>
-                  </div>
+                <CardContent className="p-0">
+                  <PrizeTimeline events={timelineEvents} />
                 </CardContent>
               </Card>
 
-              {/* Eligibility */}
               <Card className="p-6">
                 <CardHeader className="p-0 mb-6">
-                  <CardTitle className="text-2xl font-poetry">
-                    Eligibility Requirements
+                  <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                    <Users className="h-6 w-6 text-accent" />
+                    Eligibility
                   </CardTitle>
                   <CardDescription>
-                    Please ensure you meet all criteria before submitting
+                    The Prize is open to Nigerian writers, defined as someone
+                    who:
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="p-0 space-y-4">
-                  {eligibilityRequirements.map((requirement, index) => (
+                <CardContent className="p-0 space-y-3">
+                  {eligibilityCriteria.map((item, index) => (
                     <div key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-accent rounded-full mt-2.5 flex-shrink-0" />
-                      <span className="text-muted-foreground">
-                        {requirement}
-                      </span>
+                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-muted-foreground">{item}</p>
                     </div>
                   ))}
                 </CardContent>
@@ -223,105 +186,135 @@ export default function SandePrize() {
 
       <Separator />
 
-      {/* Timeline */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <PrizeTimeline events={timelineEvents} />
-          </div>
-        </div>
-      </section>
-
-      <Separator />
-
-      {/* Judging Panel */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold font-poetry">
-                Judging Panel
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Our distinguished panel of judges for the 2025 competition
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {judgingPanel.map((judge, index) => (
-                <Card key={index} className="p-6 text-center">
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold">{judge.name}</h3>
-                    <Badge variant="outline">{judge.role}</Badge>
-                    <p className="text-muted-foreground text-sm">
-                      {judge.description}
-                    </p>
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Separator />
-
       {/* Submission Guidelines */}
-      <section className="py-16">
+      <section id="submission-guidelines" className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold font-poetry">
                 Submission Guidelines
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Detailed requirements for submitting your work
+            </div>
+            <Card className="p-6">
+              <CardContent className="p-0 prose max-w-none text-muted-foreground prose-li:my-1 prose-ul:my-2">
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Submit exactly two poems, no more, no less.</li>
+                  <li>Each poem must be no longer than 40 lines.</li>
+                  <li>Poems must be original and unpublished.</li>
+                  <li>
+                    Submissions must be in a single Word or PDF document with:
+                    <ul className="list-[circle] ml-5 mt-2 space-y-2">
+                      <li>
+                        A cover page including:
+                        <ul className="list-[square] ml-5 mt-2 space-y-2">
+                          <li>Author’s full name and biography</li>
+                          <li>Date of birth</li>
+                          <li>Contact email and phone number</li>
+                          <li>Brief publication history</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Formatting:
+                    <ul className="list-[circle] ml-5 mt-2 space-y-2">
+                      <li>Times New Roman or Arial, 12-point font</li>
+                      <li>Single-spaced</li>
+                      <li>One poem per page</li>
+                      <li>Black text only</li>
+                    </ul>
+                  </li>
+                </ul>
+                <p className="mt-4">
+                  Email all submissions to:{" "}
+                  <a
+                    href="mailto:sandepoetryprize@sande.com"
+                    className="text-accent hover:underline"
+                  >
+                    sandepoetryprize@sande.com
+                  </a>
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <Separator />
+
+      {/* Judging and Awards */}
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-4">
+              <h2 className="text-3xl md:text-4xl font-bold font-poetry">
+                Judging and Awards
+              </h2>
+            </div>
+
+            <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed">
+              <p>
+                Each year, the Sande Prize will appoint a distinguished panel of
+                judges. The 2025 panel includes:
               </p>
             </div>
 
-            <div className="space-y-6">
-              {submissionFormat.map((requirement, index) => (
-                <Card key={index} className="p-6">
-                  <div className="flex gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 bg-accent text-accent-foreground rounded-lg flex items-center justify-center font-bold text-lg">
-                      {index + 1}
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-muted-foreground">{requirement}</p>
-                    </div>
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {judgingPanel.map((judge, index) => (
+                <Card key={index} className="p-6 text-center">
+                  <CardHeader className="p-0 mb-2">
+                    <CardTitle className="text-xl">{judge.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <Badge variant="outline">{judge.role}</Badge>
+                  </CardContent>
                 </Card>
               ))}
+            </div>
+
+            <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4">
+              <p>
+                The panel reserves the right not to award the Prize or to split
+                the award between more than two recipients if deemed necessary.
+                A shortlist will be announced in October, and winners will be
+                declared in December 2025.
+              </p>
+              <p>
+                All shortlisted and winning poets agree to allow the Sande Prize
+                to publish their submitted poems on the official website.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact & Submit CTA */}
-      <section className="py-16 bg-accent/5">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold font-poetry">
               Ready to Submit?
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Join the ranks of celebrated Nigerian poets. Your voice matters,
-              and your stories deserve to be heard.
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
                 className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                asChild
               >
-                <Mail className="mr-2 h-5 w-5" />
-                Submit Your Poems
-              </Button>
-              <Button variant="outline" size="lg">
-                Download Guidelines
+                <a href="mailto:sandepoetryprize@sande.com">
+                  <Mail className="mr-2 h-5 w-5" />
+                  Email Your Submission
+                </a>
               </Button>
             </div>
             <p className="text-sm text-muted-foreground">
-              Questions? Contact us at inquiries@sande.com
+              For inquiries, please contact:{" "}
+              <a
+                href="mailto:inquiries@sande.com"
+                className="text-accent hover:underline"
+              >
+                inquiries@sande.com
+              </a>
             </p>
           </div>
         </div>
