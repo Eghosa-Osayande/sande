@@ -11,7 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { Mail, Calendar, Users } from "lucide-react";
+import { Mail, Calendar, Users, Info } from "lucide-react";
 
 const timelineEvents = [
   {
@@ -65,16 +65,20 @@ const judgingPanel = [
 ];
 
 export default function SandePrize() {
+  const submissionsOpen = process.env.NEXT_PUBLIC_SUBMISSIONS_OPEN === "true";
+  const prizeMoney = process.env.NEXT_PUBLIC_PRIZE_MONEY || "₦1,000,000";
+
   return (
     <Layout>
       {/* Hero Section */}
       <Hero
         title="The Sande Prize for Nigerian Poetry"
-        // subtitle="An annual literary award of ₦1,000,000"
-        description="An annual literary award of ₦1,000,000, presented to two outstanding poems written by a Nigerian poet, the prize celebrates excellence in contemporary Nigerian poetry and provides financial and creative support to poets at home and abroad."
+        // subtitle={`An annual literary award of ${prizeMoney}`}
+        description={`An annual literary award of ${prizeMoney}, presented to two outstanding poems written by a Nigerian poet, the prize celebrates excellence in contemporary Nigerian poetry and provides financial and creative support to poets at home and abroad.`}
         primaryAction={{
-          text: "Submit Your Poems",
-          href: "mailto:sandepoetryprize@sande.com",
+          text: submissionsOpen ? "Submit Your Poems" : "Submissions Closed",
+          href: submissionsOpen ? "mailto:sandepoetryprize@sande.com" : "#",
+          disabled: true,
         }}
         secondaryAction={{
           text: "View Submission Guidelines",
@@ -95,7 +99,7 @@ export default function SandePrize() {
             <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4">
               <p>
                 The Sande Prize for Nigerian Poetry is an annual literary award
-                of ₦1,000,000, presented to two outstanding poems written by a
+                of {prizeMoney}, presented to two outstanding poems written by a
                 Nigerian poet.
               </p>
               <p>
@@ -130,56 +134,80 @@ export default function SandePrize() {
 
       <Separator />
 
-      {/* Prize Submissions: 2025 */}
+      {/* Prize Submissions Section */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <Badge className="bg-accent text-accent-foreground">
-                Prize Submissions: 2025
-              </Badge>
-              <h2 className="text-3xl md:text-4xl font-bold font-poetry">
-                Submission Window & Eligibility
-              </h2>
-            </div>
+            {submissionsOpen ? (
+              <>
+                <div className="text-center space-y-4">
+                  <Badge className="bg-accent text-accent-foreground">
+                    Prize Submissions: 2025
+                  </Badge>
+                  <h2 className="text-3xl md:text-4xl font-bold font-poetry">
+                    Submission Window & Eligibility
+                  </h2>
+                </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <Card className="p-6">
-                <CardHeader className="p-0 mb-6">
-                  <CardTitle className="text-2xl font-poetry flex items-center gap-2">
-                    <Calendar className="h-6 w-6 text-accent" />
-                    Submission Window
-                  </CardTitle>
-                  <CardDescription>
-                    August 31, 2025 – September 30, 2025
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-0">
-                  <PrizeTimeline events={timelineEvents} />
-                </CardContent>
-              </Card>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                  <Card className="p-6">
+                    <CardHeader className="p-0 mb-6">
+                      <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                        <Calendar className="h-6 w-6 text-accent" />
+                        Submission Window
+                      </CardTitle>
+                      <CardDescription>
+                        August 31, 2025 – September 30, 2025
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                      <PrizeTimeline events={timelineEvents} />
+                    </CardContent>
+                  </Card>
 
-              <Card className="p-6">
-                <CardHeader className="p-0 mb-6">
-                  <CardTitle className="text-2xl font-poetry flex items-center gap-2">
-                    <Users className="h-6 w-6 text-accent" />
-                    Eligibility
-                  </CardTitle>
-                  <CardDescription>
-                    The Prize is open to Nigerian writers, defined as someone
-                    who:
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-0 space-y-3">
-                  {eligibilityCriteria.map((item, index) => (
-                    <div key={index} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                      <p className="text-muted-foreground">{item}</p>
+                  <Card className="p-6">
+                    <CardHeader className="p-0 mb-6">
+                      <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                        <Users className="h-6 w-6 text-accent" />
+                        Eligibility
+                      </CardTitle>
+                      <CardDescription>
+                        The Prize is open to Nigerian writers, defined as
+                        someone who:
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="p-0 space-y-3">
+                      {eligibilityCriteria.map((item, index) => (
+                        <div key={index} className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
+                          <p className="text-muted-foreground">{item}</p>
+                        </div>
+                      ))}
+                    </CardContent>
+                  </Card>
+                </div>
+              </>
+            ) : (
+              <div className="text-center">
+                <Card className="max-w-2xl mx-auto p-8 border-accent/20 bg-accent/5">
+                  <CardHeader className="p-0 mb-4">
+                    <div className="mx-auto w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                      <Info className="h-8 w-8 text-accent" />
                     </div>
-                  ))}
-                </CardContent>
-              </Card>
-            </div>
+                    <CardTitle className="text-3xl font-poetry text-accent">
+                      Submissions Closed
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <p className="text-lg text-muted-foreground">
+                      Submissions to the Sande Prize are now closed. Please
+                      check back later for information about the next submission
+                      window.
+                    </p>
+                  </CardContent>
+                </Card>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -296,16 +324,27 @@ export default function SandePrize() {
               Ready to Submit?
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-accent hover:bg-accent/90 text-accent-foreground"
-                asChild
-              >
-                <a href="mailto:sandepoetryprize@sande.com">
+              {submissionsOpen ? (
+                <Button
+                  size="lg"
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                  // asChild
+                >
+                  <a href="mailto:sandepoetryprize@sande.com">
+                    <Mail className="mr-2 h-5 w-5" />
+                    Email Your Submission
+                  </a>
+                </Button>
+              ) : (
+                <Button
+                  size="lg"
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                  disabled={true}
+                >
                   <Mail className="mr-2 h-5 w-5" />
-                  Email Your Submission
-                </a>
-              </Button>
+                  Submissions Closed
+                </Button>
+              )}
             </div>
             <p className="text-sm text-muted-foreground">
               For inquiries, please contact:{" "}

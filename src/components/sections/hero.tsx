@@ -12,11 +12,13 @@ interface HeroProps {
     text: string;
     href?: string;
     onClick?: () => void;
+    disabled?: boolean;
   };
   secondaryAction?: {
     text: string;
     href?: string;
     onClick?: () => void;
+    disabled?: boolean;
   };
   className?: string;
 }
@@ -56,8 +58,26 @@ export function Hero({
             {/* Actions */}
             {(primaryAction || secondaryAction) && (
               <div className="flex flex-col sm:flex-row gap-4">
-                {primaryAction && (
-                  <Link href={primaryAction.href || "#"}>
+                {primaryAction &&
+                  (primaryAction.disabled ? (
+                    <Button
+                      size="lg"
+                      className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      disabled={true}
+                    >
+                      {primaryAction.text}
+                    </Button>
+                  ) : primaryAction.href ? (
+                    <Button
+                      size="lg"
+                      className="bg-accent hover:bg-accent/90 text-accent-foreground"
+                      asChild
+                    >
+                      <Link href={primaryAction.href}>
+                        {primaryAction.text}
+                      </Link>
+                    </Button>
+                  ) : (
                     <Button
                       size="lg"
                       className="bg-accent hover:bg-accent/90 text-accent-foreground"
@@ -65,10 +85,19 @@ export function Hero({
                     >
                       {primaryAction.text}
                     </Button>
-                  </Link>
-                )}
-                {secondaryAction && (
-                  <Link href={secondaryAction.href || "#"}>
+                  ))}
+                {secondaryAction &&
+                  (secondaryAction.disabled ? (
+                    <Button variant="outline" size="lg" disabled={true}>
+                      {secondaryAction.text}
+                    </Button>
+                  ) : secondaryAction.href ? (
+                    <Button variant="outline" size="lg" asChild>
+                      <Link href={secondaryAction.href}>
+                        {secondaryAction.text}
+                      </Link>
+                    </Button>
+                  ) : (
                     <Button
                       variant="outline"
                       size="lg"
@@ -76,8 +105,7 @@ export function Hero({
                     >
                       {secondaryAction.text}
                     </Button>
-                  </Link>
-                )}
+                  ))}
               </div>
             )}
           </div>
