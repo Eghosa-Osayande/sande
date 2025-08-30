@@ -83,7 +83,7 @@ const books = [
       {
         title: "The Photographs (I)",
         content:
-          "You are water, and like all water, you would depend on thirst to be loved. Year after year, you would long to hear the men on of your name, Water, when people speak of their favourite drinks. But tell me, who craves for water when there is Moet? Year after year, you would secretly envy everyone who tastes like wine until God sneaks into your misery. And because God’s throat knows how to respect thirst, God would drink of you long after his thirst has been quenched and you would finally know that even ordinariness is beautiful.",
+          "You are water, and like all water, you would depend on thirst to be loved. Year after year, you would long to hear the mention of your name, Water, when people speak of their favourite drinks. But tell me, who craves for water when there is Moet? Year after year, you would secretly envy everyone who tastes like wine until God sneaks into your misery. And because God’s throat knows how to respect thirst, God would drink of you long after his thirst has been quenched and you would finally know that even ordinariness is beautiful.",
       },
       {
         title: "The Photographs (II)",
