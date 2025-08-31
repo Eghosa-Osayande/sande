@@ -138,76 +138,76 @@ export default function SandePrize() {
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto space-y-12">
-            {submissionsOpen ? (
-              <>
-                <div className="text-center space-y-4">
-                  <Badge className="bg-accent text-accent-foreground">
-                    Prize Submissions: 2025
-                  </Badge>
-                  <h2 className="text-3xl md:text-4xl font-bold font-poetry">
-                    Submission Window & Eligibility
-                  </h2>
-                </div>
+            <div className="text-center space-y-4">
+              <Badge className="bg-accent text-accent-foreground">
+                Prize Submissions: 2025
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold font-poetry">
+                Submission Window & Eligibility
+              </h2>
+            </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                  <Card className="p-6">
-                    <CardHeader className="p-0 mb-6">
-                      <CardTitle className="text-2xl font-poetry flex items-center gap-2">
-                        <Calendar className="h-6 w-6 text-accent" />
-                        Submission Window
-                      </CardTitle>
-                      <CardDescription>
-                        August 31, 2025 – September 30, 2025
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <PrizeTimeline events={timelineEvents} />
-                    </CardContent>
-                  </Card>
-
-                  <Card className="p-6">
-                    <CardHeader className="p-0 mb-6">
-                      <CardTitle className="text-2xl font-poetry flex items-center gap-2">
-                        <Users className="h-6 w-6 text-accent" />
-                        Eligibility
-                      </CardTitle>
-                      <CardDescription>
-                        The Prize is open to Nigerian writers, defined as
-                        someone who:
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="p-0 space-y-3">
-                      {eligibilityCriteria.map((item, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-                          <p className="text-muted-foreground">{item}</p>
-                        </div>
-                      ))}
-                    </CardContent>
-                  </Card>
-                </div>
-              </>
-            ) : (
-              <div className="text-center">
-                <Card className="max-w-2xl mx-auto p-8 border-accent/20 bg-accent/5">
-                  <CardHeader className="p-0 mb-4">
-                    <div className="mx-auto w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
-                      <Info className="h-8 w-8 text-accent" />
-                    </div>
-                    <CardTitle className="text-3xl font-poetry text-accent">
-                      Submissions Closed
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Submission Window - Only show when submissions are open */}
+              {submissionsOpen ? (
+                <Card className="p-6">
+                  <CardHeader className="p-0 mb-6">
+                    <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                      <Calendar className="h-6 w-6 text-accent" />
+                      Submission Window
+                    </CardTitle>
+                    <CardDescription>
+                      August 31, 2025 – September 30, 2025
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <PrizeTimeline events={timelineEvents} />
+                  </CardContent>
+                </Card>
+              ) : (
+                <Card className="p-6">
+                  <CardHeader className="p-0 mb-6">
+                    <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                      <Info className="h-6 w-6 text-accent" />
+                      Submission Status
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="p-0">
-                    <p className="text-lg text-muted-foreground">
-                      Submissions to the Sande Prize are now closed. Please
-                      check back later for information about the next submission
-                      window.
-                    </p>
+                    <div className="text-center p-6">
+                      <p className="text-lg text-muted-foreground mb-4">
+                        Submissions to the Sande Prize are now closed.
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        Please check back later for information about the next
+                        submission window.
+                      </p>
+                    </div>
                   </CardContent>
                 </Card>
-              </div>
-            )}
+              )}
+
+              {/* Eligibility - Always visible */}
+              <Card className="p-6">
+                <CardHeader className="p-0 mb-6">
+                  <CardTitle className="text-2xl font-poetry flex items-center gap-2">
+                    <Users className="h-6 w-6 text-accent" />
+                    Eligibility
+                  </CardTitle>
+                  <CardDescription>
+                    The Prize is open to Nigerian writers, defined as someone
+                    who:
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 space-y-3">
+                  {eligibilityCriteria.map((item, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
+                      <p className="text-muted-foreground">{item}</p>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

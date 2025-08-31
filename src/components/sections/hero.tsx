@@ -8,6 +8,11 @@ interface HeroProps {
   description?: string;
   imageSrc?: string;
   imageAlt?: string;
+  images?: Array<{
+    src: string;
+    alt: string;
+    className?: string;
+  }>;
   primaryAction?: {
     text: string;
     href?: string;
@@ -29,6 +34,7 @@ export function Hero({
   description,
   imageSrc,
   imageAlt,
+  images,
   primaryAction,
   secondaryAction,
   className = "",
@@ -111,7 +117,26 @@ export function Hero({
           </div>
 
           {/* Image */}
-          {imageSrc && (
+          {images && images.length > 0 ? (
+            <div className="relative">
+              <div className="grid grid-cols-2 gap-4">
+                {images.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl"
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className={`object-cover ${image.className || ""}`}
+                      priority={index === 0}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : imageSrc ? (
             <div className="relative">
               <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
                 <Image
@@ -123,7 +148,7 @@ export function Hero({
                 />
               </div>
             </div>
-          )}
+          ) : null}
         </div>
       </div>
     </section>

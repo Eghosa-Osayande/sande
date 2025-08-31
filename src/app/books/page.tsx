@@ -102,6 +102,16 @@ export default function Books() {
         title="Published Works"
         subtitle="Collections that Capture the Nigerian Experience"
         description="Explore two groundbreaking poetry collections that examine identity, spirituality, and the complexities of contemporary African life."
+        images={[
+          {
+            src: "/images/forked.jpeg",
+            alt: "Forked Accents book cover",
+          },
+          {
+            src: "/images/photograph.jpeg",
+            alt: "Thirty Photographs of God book cover",
+          },
+        ]}
         primaryAction={{
           text: "Read Excerpts",
           href: "#excerpts",
@@ -110,6 +120,7 @@ export default function Books() {
           text: "Purchase Books",
           href: "#purchase-links",
         }}
+        className="bg-muted/20"
       />
 
       {/* Featured Quote */}

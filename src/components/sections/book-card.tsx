@@ -118,16 +118,16 @@ export function BookCard({
                       </DialogDescription>
                     </DialogHeader>
                     <div className="space-y-8 py-4">
-                      {excerpts.map((excerpt, index) => (
+                      {excerpts.map(({ title, content }, index) => (
                         <div key={index}>
-                          {excerpt.title && (
+                          {title && (
                             <h3 className="text-xl font-poetry text-accent font-bold mb-4">
-                              {excerpt.title}
+                              {title}
                             </h3>
                           )}
                           <div className="prose prose-lg max-w-none text-muted-foreground">
                             <p className="whitespace-pre-line font-poetry">
-                              {excerpt.content}
+                              {content}
                             </p>
                           </div>
                         </div>
