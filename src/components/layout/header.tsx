@@ -4,14 +4,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Mail } from "lucide-react";
 import { useState } from "react";
-
+import { FaInstagram } from "react-icons/fa";
 const navigation = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Books", href: "/books" },
   { name: "Sande Prize", href: "/sande-prize" },
+];
+
+const contactLinks = [
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/osadolorosayande21/",
+    icon: FaInstagram,
+    external: true,
+  },
+  {
+    name: "Email",
+    href: "mailto:contact@osadolor.com",
+    icon: Mail,
+    external: false,
+  },
 ];
 
 export function Header() {
@@ -47,13 +62,73 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Desktop Theme Toggle */}
-          <div className="hidden md:flex items-center">
+          {/* Desktop Contact Icons & Theme Toggle */}
+          <div className="hidden md:flex items-center space-x-4">
+            {/* Contact Icons */}
+            <div className="flex items-center space-x-3">
+              {contactLinks.map((link) => {
+                const IconComponent = link.icon;
+                if (link.external) {
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-accent transition-colors p-2 rounded-md hover:bg-muted/50"
+                      title={link.name}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                    </a>
+                  );
+                }
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-accent transition-colors p-2 rounded-md hover:bg-muted/50"
+                    title={link.name}
+                  >
+                    <IconComponent className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
             {/* <ThemeToggle /> */}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
+            {/* Contact Icons for Mobile */}
+            <div className="flex items-center space-x-2">
+              {contactLinks.map((link) => {
+                const IconComponent = link.icon;
+                if (link.external) {
+                  return (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-accent transition-colors p-2 rounded-md hover:bg-muted/50"
+                      title={link.name}
+                    >
+                      <IconComponent className="h-4 w-4" />
+                    </a>
+                  );
+                }
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-accent transition-colors p-2 rounded-md hover:bg-muted/50"
+                    title={link.name}
+                  >
+                    <IconComponent className="h-4 w-4" />
+                  </a>
+                );
+              })}
+            </div>
             {/* <ThemeToggle /> */}
             <Button
               variant="ghost"
