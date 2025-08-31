@@ -69,11 +69,7 @@ export default function Home() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <Button
-                    variant="ghost"
-                    className="text-accent hover:text-accent/80"
-                    asChild
-                  >
+                  <Button variant="ghost" className="text-accent " asChild>
                     <Link href="/about">Learn More</Link>
                   </Button>
                 </CardContent>
@@ -115,11 +111,7 @@ export default function Home() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
-                  <Button
-                    variant="ghost"
-                    className="text-accent hover:text-accent/80"
-                    asChild
-                  >
+                  <Button variant="ghost" className="text-accent" asChild>
                     <Link href="/sande-prize">Learn About the Prize</Link>
                   </Button>
                 </CardContent>

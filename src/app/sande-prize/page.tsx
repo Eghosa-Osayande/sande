@@ -84,7 +84,7 @@ export default function SandePrize() {
           text: "View Submission Guidelines",
           href: "#submission-guidelines",
         }}
-        className="bg-accent/5"
+        // className="bg-accent/5"
       />
 
       {/* About the Prize */}

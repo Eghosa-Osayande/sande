@@ -108,7 +108,7 @@ export function BookCard({
                       Read Full Excerpts
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto">
+                  <DialogContent className="sm:max-w-[600px] max-h-[80vh] overflow-y-auto custom-scrollbar">
                     <DialogHeader>
                       <DialogTitle className="text-2xl font-poetry">
                         Excerpts from &quot;{title}&quot;

@@ -113,12 +113,12 @@ export function Hero({
           {/* Image */}
           {imageSrc && (
             <div className="relative">
-              <div className="relative aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none">
+              <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
                 <Image
                   src={imageSrc}
-                  alt={imageAlt || ""}
+                  alt={imageAlt || "Hero image"}
                   fill
-                  className="object-cover rounded-lg"
+                  className="object-cover"
                   priority
                 />
               </div>
