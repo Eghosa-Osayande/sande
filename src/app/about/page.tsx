@@ -82,7 +82,7 @@ export default function About() {
         title="About the Author"
         subtitle="Osadolor Osayande"
         description="A voice that bridges continents, cultures, and generations through the power of verse."
-        imageSrc="/images/poet-about.png"
+        imageSrc="/images/ignore.jpeg"
         imageAlt="Osadolor Osayande - About Portrait"
         className="bg-muted/30"
       />

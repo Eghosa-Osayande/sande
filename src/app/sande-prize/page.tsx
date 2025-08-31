@@ -205,6 +205,12 @@ export default function SandePrize() {
                       <p className="text-muted-foreground">{item}</p>
                     </div>
                   ))}
+                  <p className="text-muted-foreground">
+                    Only poems written in English are eligible. However,
+                    translated poems are welcome. In such cases, the prize money
+                    may be shared with the translator at the discretion of the
+                    judging panel.
+                  </p>
                 </CardContent>
               </Card>
             </div>

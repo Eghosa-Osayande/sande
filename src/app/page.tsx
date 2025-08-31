@@ -8,8 +8,12 @@ export default function Home() {
       <Hero
         title="Forked Accents"
         description="A bold and innovative collection that examines language, identity, and belonging in an increasingly connected world. Through vivid imagery and linguistic playfulness, this work explores the complexities of cultural identity, the immigrant experience, and the ways in which our accents carry the stories of our origins. The poems celebrate the beauty of linguistic diversity while acknowledging the challenges of existing between cultures."
-        imageSrc="/images/landing.jpeg"
+        imageSrc="/images/landing.webp"
         imageAlt="Forked Accents - Book Cover"
+        primaryAction={{
+          text: "Buy on Amazon",
+          href: "https://a.co/d/5UcqcYy",
+        }}
       />
 
       {/* Section 2: Author Information */}
